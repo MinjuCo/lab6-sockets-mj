@@ -8,6 +8,12 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const apiUpdateStatsRouter = require('./routes/api/v1/stats');
 
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/coronamap', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
+
 var app = express();
 
 // view engine setup

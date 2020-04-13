@@ -3,6 +3,7 @@ const router = express.Router();
 const statsController = require('../../../controllers/api/v1/stats');
 
 router.get("/", statsController.getAll);
-router.put("/updateStats", statsController.update);
+router.post("/add", statsController.create);
+//router.put("/updateStats", statsController.update);
 
 module.exports = router;
