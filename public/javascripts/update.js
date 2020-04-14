@@ -1,4 +1,6 @@
-primus = Primus.connect("", {
+let base_url = "https://coronastats-mj.herokuapp.com";
+
+primus = Primus.connect(base_url, {
   reconnect: {
       max: Infinity // Number: The max delay before we try to reconnect.
     , min: 500 // Number: The minimum delay before we try reconnect.
@@ -6,7 +8,7 @@ primus = Primus.connect("", {
   }
 });
 
-fetch("http://localhost:3000/api/v1/stats").then(result => {
+fetch(base_url + "/api/v1/stats").then(result => {
     return result.json();
 }).then(json => {
     json.data.stats.forEach(stat => {
@@ -25,7 +27,7 @@ document.querySelector("#btnUpdate").addEventListener("click", () => {
   let number = document.querySelector("#numberInfected").value;
 
   if(statId != "" && (number && !isNaN(number))){
-    fetch('http://localhost:3000/api/v1/stats/updateStats', {
+    fetch(base_url + '/api/v1/stats/updateStats', {
       method: "put",
       'headers':{
         'Content-Type': 'application/json'
@@ -38,6 +40,11 @@ document.querySelector("#btnUpdate").addEventListener("click", () => {
       console.log(result);
       return result.json();
     }).then(json => {
+      primus.write({
+        "action": "updateStats",
+        "data": json.data
+      });
+
       if(json.status === "success"){
         document.querySelector(".info").classList.add("success");
         document.querySelector(".info").classList.remove("error");
