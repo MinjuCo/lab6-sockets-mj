@@ -1,8 +1,45 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: steelblue;
 }
 
 a {
   color: #00B7FF;
+}
+
+h1{
+  text-align: center;
+}
+
+#statsContainer{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  width: 400px;
+  margin: auto;
+}
+
+.stats{
+  box-sizing: border-box;
+  border: 1px solid lightgray;
+  border-radius: 15px;
+  padding: 1em;
+  background-color: #fefefe;
+  box-shadow: 5px 10px 10px rgb(32, 62, 87);
+}
+
+.stat{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  border-top: 1px solid lightgray;
+}
+
+.stat__number{
+  font-weight: bold;
+}
+
+.stat__country{
+  color: steelblue;
 }

@@ -1,13 +1,12 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const statsSchema = new Schema({
-    user: String,
-    text: {
-        type: String,
+    country: String,
+    numberInfected: {
+        type: Number,
         required: true
     }
-
-})
+});
 
 const CoronaStats = mongoose.model('CoronaStats', statsSchema);
 

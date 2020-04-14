@@ -6,7 +6,7 @@ const getAll = (req, res) => {
       res.json({
         "status": "success",
         "data": {
-          docs
+          "stats": docs
         }
       });
     }
@@ -29,7 +29,7 @@ const create = (req, res) => {
       res.json({
         "status": "success",
         "data": {
-          doc
+          "stat": doc
         }
       });
     }
