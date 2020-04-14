@@ -1,0 +1,13 @@
+extends ../layout
+
+block content
+  h1 COVID-19 Update stats
+  div(id="statsContainer")
+    div(class="stats")
+      h2(class="stat__title") How many people are infected?
+      div(class="stat")
+        input(type="text" class="input--text stat__input" placeholder="Fill here a number")
+        select(id="country" class="stat__input")
+        button(id="btnUpdate" class="stat__btn") Update Statistics
+  script(src="/primus/primus.js")
+  script(src="/javascripts/update.js")
