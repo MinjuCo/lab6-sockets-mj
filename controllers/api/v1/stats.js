@@ -37,10 +37,27 @@ const create = (req, res) => {
 }
 
 const update = (req, res) => {
-  let country = req.body.country;
+  let countryId = req.body._id;
   let numberInfected = req.body.numberInfected;
-  
+  CoronaStats.findOneAndUpdate({
+      _id: countryId
+  },{
+      numberInfected: numberInfected
+  }, {new: true}).then(doc => {
+      res.json({
+          "status": "success",
+          "data": {
+            "stat": doc
+          }
+      });
+  }).catch(err => {
+      res.json({
+        "status": "error",
+        "message": err
+      });
+  });
 }
 
 module.exports.getAll = getAll;
 module.exports.create = create;
+module.exports.update = update;
